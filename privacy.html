@@ -43,6 +43,12 @@
             margin-top: 36px;
             margin-bottom: 12px;
         }
+        h3 {
+            font-size: 17px;
+            color: #ccc;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
         p, li {
             font-size: 15px;
             margin-bottom: 12px;
@@ -75,10 +81,10 @@
         <a href="index.html" class="back-link">&larr; Back to FaceHider AI</a>
 
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: February 21, 2026</p>
+        <p class="updated">Last updated: March 19, 2026</p>
 
         <div class="highlight">
-            <strong>Key Point:</strong> FaceHider AI processes all your photos and videos entirely on your device. Your media never leaves your phone.
+            <strong>Key Point:</strong> FaceHider AI processes all your photos and videos entirely on your device. Your media never leaves your phone. No face data is collected, stored, or shared.
         </div>
 
         <h2>1. Introduction</h2>
@@ -88,25 +94,26 @@
         <p>FaceHider AI is designed with a <strong>privacy-first architecture</strong>. All photo and video processing, including face detection, object recognition, and blur/mosaic effects, is performed <strong>entirely on your device</strong> using Apple's Vision Framework and Metal GPU acceleration.</p>
         <ul>
             <li>Your photos and videos are <strong>never uploaded</strong> to any server.</li>
-            <li>Face detection and tracking runs locally using Apple's on-device AI.</li>
+            <li>Face detection and tracking runs locally using Apple's on-device AI (Vision framework).</li>
             <li>No cloud processing or external APIs are used for media analysis.</li>
+            <li>No third-party AI services are used for face detection or image processing.</li>
             <li>Processed media is saved only to your device's Photo Library or shared via the iOS share sheet at your discretion.</li>
         </ul>
 
         <h2>3. Information We Collect</h2>
         <p>We collect minimal data to improve the app experience:</p>
 
-        <h3 style="font-size:17px; color:#ccc; margin-top:20px; margin-bottom:8px;">3.1 Analytics Data</h3>
-        <p>We use <strong>Firebase Analytics</strong> to collect anonymous usage data, including:</p>
+        <h3>3.1 Analytics Data</h3>
+        <p>We use <strong>Firebase Analytics</strong> and <strong>Amplitude</strong> to collect anonymous usage data, including:</p>
         <ul>
             <li>App usage patterns (screens viewed, features used)</li>
             <li>Device type and iOS version</li>
             <li>App performance metrics</li>
             <li>Crash reports via <strong>Firebase Crashlytics</strong></li>
         </ul>
-        <p>This data is anonymized, aggregated, and cannot be used to identify you personally.</p>
+        <p>This data is anonymized, aggregated, and cannot be used to identify you personally. No photos, videos, or face data is included in analytics.</p>
 
-        <h3 style="font-size:17px; color:#ccc; margin-top:20px; margin-bottom:8px;">3.2 Subscription Data</h3>
+        <h3>3.2 Subscription Data</h3>
         <p>If you subscribe to FaceHider AI Premium, subscription management is handled by <strong>RevenueCat</strong> and <strong>Apple's App Store</strong>. We receive:</p>
         <ul>
             <li>Subscription status (active/expired)</li>
@@ -115,19 +122,36 @@
         </ul>
         <p>We do <strong>not</strong> have access to your payment information, credit card details, or Apple ID. All payment processing is handled securely by Apple.</p>
 
-        <h3 style="font-size:17px; color:#ccc; margin-top:20px; margin-bottom:8px;">3.3 Photos and Videos</h3>
+        <h3>3.3 Photos and Videos</h3>
         <p>We <strong>do not collect, store, or transmit</strong> any of your photos or videos. Access to your Photo Library is requested solely to allow you to select and save media within the app. This access is governed by iOS permissions that you control.</p>
 
-        <h2>4. Third-Party Services</h2>
-        <p>The App uses the following third-party services, each with their own privacy policies:</p>
+        <h3>3.4 Face Detection Data</h3>
+        <p>FaceHider AI uses Apple's Vision framework to detect face positions (bounding box coordinates) in your photos and videos. This detection is performed entirely on your device.</p>
         <ul>
-            <li><strong>Firebase Analytics &amp; Crashlytics</strong> (Google) &mdash; <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
-            <li><strong>RevenueCat</strong> &mdash; <a href="https://www.revenuecat.com/privacy/" target="_blank">Privacy Policy</a></li>
-            <li><strong>Apple App Store</strong> &mdash; <a href="https://www.apple.com/legal/privacy/" target="_blank">Privacy Policy</a></li>
+            <li>Face detection data consists only of rectangular coordinates indicating face positions &mdash; <strong>no biometric identifiers, facial recognition templates, or face embeddings</strong> are created or stored.</li>
+            <li>Face coordinate data exists only in your device's memory (RAM) during an active editing session.</li>
+            <li>When you close the editor or leave the app, all face detection data is immediately discarded.</li>
+            <li>Face data is <strong>never written to disk, uploaded to any server, or shared with any third party</strong>.</li>
+            <li>No face data is used for identification, authentication, or tracking purposes.</li>
+            <li>The app does not create or store facial feature maps, face prints, or any form of biometric data.</li>
+        </ul>
+
+        <h2>4. Third-Party Services</h2>
+        <p>The App uses the following third-party services, each with their own privacy policies. <strong>None of these services receive any face data, images, or videos.</strong></p>
+        <ul>
+            <li><strong>Firebase Analytics &amp; Crashlytics</strong> (Google) &mdash; Anonymous usage analytics and crash reporting &mdash; <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
+            <li><strong>Amplitude</strong> &mdash; Anonymous usage analytics &mdash; <a href="https://amplitude.com/privacy" target="_blank">Privacy Policy</a></li>
+            <li><strong>RevenueCat</strong> &mdash; Subscription management &mdash; <a href="https://www.revenuecat.com/privacy/" target="_blank">Privacy Policy</a></li>
+            <li><strong>Apple App Store</strong> &mdash; App distribution and payments &mdash; <a href="https://www.apple.com/legal/privacy/" target="_blank">Privacy Policy</a></li>
         </ul>
 
         <h2>5. Data Retention</h2>
-        <p>Analytics data is retained according to Firebase's default retention policies (typically 14 months). We do not maintain any personal data beyond what is described above. You can reset your analytics identifier by reinstalling the app.</p>
+        <ul>
+            <li><strong>Face detection data:</strong> Retained only during active editing sessions in device memory. Immediately discarded when the editor is closed or the app is terminated. Never written to persistent storage.</li>
+            <li><strong>Analytics data:</strong> Retained according to Firebase's and Amplitude's default retention policies (typically 14 months). This data is anonymous and does not include any face data or media.</li>
+            <li><strong>Subscription data:</strong> Retained as long as your subscription is active, managed by RevenueCat and Apple.</li>
+        </ul>
+        <p>You can reset your analytics identifier by reinstalling the app.</p>
 
         <h2>6. Children's Privacy</h2>
         <p>FaceHider AI is rated 4+ on the App Store and is suitable for all ages. All media processing is performed entirely on-device, and we do not collect personal information from users of any age. The only data collected is anonymous analytics as described in Section 3. If you believe any personal data has been inadvertently collected, please contact us and we will take steps to delete such information.</p>
